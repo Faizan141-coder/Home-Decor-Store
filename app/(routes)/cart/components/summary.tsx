@@ -29,6 +29,10 @@ const Summary = () => {
     return total + Number(item.price)
   }, 0);
 
+  const shippmentCost = 520
+
+  const subTotal = totalPrice + shippmentCost
+
   const onCheckout = async () => {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
       productIds: items.map((item) => item.id)
@@ -48,6 +52,14 @@ const Summary = () => {
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Order total</div>
          <Currency value={totalPrice} />
+        </div>
+        <div className="flex items-center justify-between border-gray-200">
+          <div className="text-base font-medium text-gray-900">Shippment Cost</div>
+         <Currency value={shippmentCost} />
+        </div>
+        <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+          <div className="text-base font-medium text-gray-900">Sub Total</div>
+         <Currency value={subTotal} />
         </div>
       </div>
       <Button onClick={onCheckout} disabled={items.length === 0} className="w-full mt-6">
