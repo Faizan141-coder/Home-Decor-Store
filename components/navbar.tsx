@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 
 import MainNav from "@/components/main-nav";
 import Container from "@/components/ui/container";
@@ -17,6 +18,7 @@ const Navbar = async () => {
           </Link>
           <MainNav data={categories} />
           <NavbarActions />
+          <UserButton afterSignOutUrl="/" />
         </div>
       </Container>
     </div>
