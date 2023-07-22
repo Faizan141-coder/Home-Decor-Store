@@ -22,5 +22,4 @@ const Billboard: React.FC<BillboardProps> = ({ data, aspectRatio }) => {
   );
 };
 
-
 export default Billboard;
