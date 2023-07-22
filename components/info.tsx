@@ -1,6 +1,7 @@
 "use client";
 
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, CreditCard } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import Currency  from "@/components/ui/currency";
 import Button from "@/components/ui/button";
@@ -13,10 +14,16 @@ interface InfoProps {
 
 const Info: React.FC<InfoProps> = ({ data }) => {
   const cart = useCart();
+  const router = useRouter();
 
   const onAddToCart = () => {
     cart.addItem(data);
   }
+
+  const onBuy = () => {
+    cart.addItem(data);
+    router.push('/cart');
+  };
 
   return ( 
     <div>
@@ -49,6 +56,10 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         <Button onClick={onAddToCart} className="flex items-center gap-x-2">
           Add To Cart
           <ShoppingCart size={20} />
+        </Button>
+        <Button onClick={onBuy} className="flex items-center gap-x-2">
+          Buy Now
+          <CreditCard size={20} />
         </Button>
       </div>
     </div>
