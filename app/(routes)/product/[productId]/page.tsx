@@ -21,6 +21,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({
     categoryId: product?.category?.id
   });
 
+  const displayedSuggestedProducts = suggestedProducts.slice(0, 4);
+
   if (!product) {
     return null;
   }
@@ -36,7 +38,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Related Items" items={suggestedProducts} />
+          <ProductList title="Related Items" items={displayedSuggestedProducts} />
         </div>
       </Container>
     </div>  
